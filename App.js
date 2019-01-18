@@ -12,7 +12,6 @@ class HomeOne extends React.Component {
     title: 'R-T-A Screen-One',
   };
 
-
   _triggerGA(){
     
     tracker1.trackEvent("React-Test-App-Button-Click1","Click");
@@ -30,6 +29,8 @@ class HomeOne extends React.Component {
     tracker1.trackScreenView("React-Test-App-Screen-One");
     firebase.analytics().setCurrentScreen("React-Test-App-Screen-One");
     firebase.analytics().setUserProperty("Fullname","Kasatria React Native Test App");
+    firebase.analytics().setUserProperty("gender","Male");
+    firebase.analytics().setUserProperty("Organization","Kasatria");
 
     return(
       <View style={{
@@ -76,6 +77,13 @@ class DetailsScreen extends React.Component {
     title: 'R-T-A Screen-Two',
   };
 
+  _triggerFA(){
+
+    tracker1.trackEvent("Kasatria_Checkout_Button","Click",{"itemId":"123AEFR","itemName":"SONY Xtra Bass Earbuds"});
+    firebase.analytics().logEvent("Kasatria_Checkout_Button",{"itemId":"123AEFR","itemName":"SONY Xtra Bass Earbuds"});
+    alert("Your item has been added to your cart");
+  }
+
   render() {
 
     tracker1.trackScreenView("React-Test-App-Screen-Two");
@@ -92,6 +100,12 @@ class DetailsScreen extends React.Component {
       }}>
           <View style={{height: 180, marginTop: 5, paddingTop: 30, paddingLeft: 10, paddingRight: 10, backgroundColor: 'white'}}>
             <ImageBackground style={{ width: '100%', height: '100%'}} source={require('./logo.png')} />
+          </View>
+          <View style={{height: 50, marginTop: 20, paddingTop: 30, paddingLeft: 40, paddingRight: 40, backgroundColor: 'white'}}>
+            <Button
+              onPress={this._triggerFA}
+              title="Sample Checkout"
+            />
           </View>
           <View style={{height: 50, marginTop: 20, paddingTop: 30, paddingLeft: 40, paddingRight: 40, backgroundColor: 'white'}}>
           <Button
