@@ -27,9 +27,9 @@ class HomeOne extends React.Component {
 
   render(){
 
-    firebase.analytics().setCurrentScreen("Home One Screen");
-    firebase.analytics().setUserProperty("Fullname","Kasatria Baja Hitam");
-    firebase.analytics().logEvent("kasatria_test_event");
+    tracker1.trackScreenView("React-Test-App-Screen-One");
+    firebase.analytics().setCurrentScreen("React-Test-App-Screen-One");
+    firebase.analytics().setUserProperty("Fullname","Kasatria React Native Test App");
 
     return(
       <View style={{
@@ -79,7 +79,10 @@ class DetailsScreen extends React.Component {
   render() {
 
     tracker1.trackScreenView("React-Test-App-Screen-Two");
-
+    tracker1.trackEvent("React-Test-App-Click_Page_2","Click");
+    firebase.analytics().logEvent("kasatria_FA_click_page_two");
+    firebase.analytics().setCurrentScreen("React-Test-App-Screen-Two");
+    
     return (
       <View style={{
         flex: 1,
@@ -110,6 +113,9 @@ class DetailsScreen2 extends React.Component {
   render() {
 
     tracker1.trackScreenView("React-Test-App-Screen-Three");
+    tracker1.trackEvent("React-Test-App-Click_Page_3","Click");
+    firebase.analytics().logEvent("kasatria_FA_click_page_three");
+    firebase.analytics().setCurrentScreen("React-Test-App-Screen-Three");
 
     return (
       <View style={{
